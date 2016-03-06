@@ -12,16 +12,18 @@ SCREW_SPACING = 25;
 CYLINDER_HEIGHT = HEIGHT;
 CYLINDER_RADIOUS = (BALL_SIZE/2) + WALL_THICKNESS + AIRGAP;
 
+function half(dimension) = dimension / 2;
+
+CYLINDER_OFFSET = [0, 0, HEIGHT-half(BALL_SIZE)];
+
 difference () {
     cylinder(r1 = CYLINDER_RADIOUS , r2 = CYLINDER_RADIOUS,  CYLINDER_HEIGHT - (BALL_SIZE * PROTUDE_PERCENTAGE));
-
-    offset = [0, 0, HEIGHT - (BALL_SIZE/2];
-
-    translate(offset) {
+    
+    translate(CYLINDER_OFFSET) {
         cube(size = [CYLINDER_RADIOUS * 2 + 5, CYLINDER_RADIOUS/2, BALL_SIZE*1.25], center = true );
         }
 
-    translate(offset) {
+    translate(CYLINDER_OFFSET) {
         sphere (BALL_SIZE/2 + AIRGAP, $fa=5, $fs=0.1);
         }
     }
