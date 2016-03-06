@@ -33,15 +33,6 @@ module top() {
     }
 }
 
-module screw_holes () {
-    translate([SCREW_SPACING/2, 0, 0]) {
-        cylinder(r1 = SCREW_RADIOUS, r2 = SCREW_RADIOUS, h= MOUNT + 2);
-    }
-    translate([1 - SCREW_SPACING/2, 0, 0]) {
-        cylinder(r1 = SCREW_RADIOUS, r2 = SCREW_RADIOUS, h= MOUNT + 2);
-    }
-}
-
 module platform() {
     hull() {
         translate([SCREW_SPACING/2, 0, 0]) {
@@ -51,6 +42,19 @@ module platform() {
             circle(SCREW_RADIOUS * 3);
         }
         circle(RADIOUS);
+    }
+}
+
+module screw_holes () {
+    second_screw = 1 - SCREW_SPACING/2;
+    positions = [[SCREW_SPACING/2, 0, 0], [second_screw, 0, 0]];
+    number_of_holes = len(positions);
+
+    translate([SCREW_SPACING/2, 0, 0]) {
+        cylinder(r1 = SCREW_RADIOUS, r2 = SCREW_RADIOUS, h= MOUNT + 2);
+    }
+    translate([second_screw, 0, 0]) {
+        cylinder(r1 = SCREW_RADIOUS, r2 = SCREW_RADIOUS, h= MOUNT + 2);
     }
 }
 
