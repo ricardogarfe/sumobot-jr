@@ -4,14 +4,14 @@ WALL_THICKNESS = 2;
 AIRGAP = .5;
 MOUNT = 3;
 
-PROTUDE_PERCENTAGE = .33; //percentage of ball radius sticking out 
+PROTUDE_PERCENTAGE = .33; 
 
 MOUNT_TYPE = 1;  //1=ears  2=center screw
 
 BALL_SIZE = 15.88;
 
 SCREW_SPACING = 25;
-SCREW_RADIOUS = 1.5;  //3mm screw
+SCREW_RADIOUS = 1.5;
 
 RADIOUS = (BALL_SIZE/2) + WALL_THICKNESS + AIRGAP;
 
