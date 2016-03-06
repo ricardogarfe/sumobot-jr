@@ -15,11 +15,13 @@ CYLINDER_RADIOUS = (BALL_SIZE/2) + WALL_THICKNESS + AIRGAP;
 difference () {
     cylinder(r1 = CYLINDER_RADIOUS , r2 = CYLINDER_RADIOUS,  CYLINDER_HEIGHT - (BALL_SIZE * PROTUDE_PERCENTAGE));
 
-    translate([0,0,HEIGHT - BALL_SIZE/2]) {
+    offset = [0, 0, HEIGHT - (BALL_SIZE/2];
+
+    translate(offset) {
         cube(size = [CYLINDER_RADIOUS * 2 + 5, CYLINDER_RADIOUS/2, BALL_SIZE*1.25], center = true );
         }
 
-    translate([0,0,HEIGHT - (BALL_SIZE/2)]) {
+    translate(offset) {
         sphere (BALL_SIZE/2 + AIRGAP, $fa=5, $fs=0.1);
         }
     }
