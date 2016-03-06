@@ -4,6 +4,7 @@ WALL_THICKNESS = 2;
 AIRGAP = .5;
 MOUNT = 3;
 
+ARRAY_BASE_CORRECTIION = -1;
 PROTUDE_PERCENTAGE = .33; 
 
 MOUNT_TYPE = 1;  //1=ears  2=center screw
@@ -41,19 +42,23 @@ module screw_holes () {
     }
 }
 
+module platform() {
+    hull() {
+        translate([SCREW_SPACING/2, 0, 0]) {
+            circle(SCREW_RADIOUS * 3);
+        }
+        translate([1 - SCREW_SPACING/2, 0, 0]) {
+            circle(SCREW_RADIOUS * 3);
+        }
+        circle(RADIOUS);
+    }
+}
+
 module base() {
     difference (){
         linear_extrude(height=MOUNT)
-        hull() {
-            translate([SCREW_SPACING/2, 0, 0]) {
-                circle(SCREW_RADIOUS * 3);
-                }
-            translate([1 - SCREW_SPACING/2, 0, 0]) {
-                circle(SCREW_RADIOUS * 3);
-                }
-            circle(RADIOUS);
-        }
-        screw_holes();
+            platform();
+                screw_holes();
     }
 }
 
