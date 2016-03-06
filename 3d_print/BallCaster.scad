@@ -9,7 +9,7 @@ PROTUDE_PERCENTAGE = .33; //percentage of ball radius sticking out
 MOUNT_TYPE = 1;  //1=ears  2=center screw
 SCREW_SPACING = 25;
 
-CYLINDER_HEIGHT = HEIGHT;
+CYLINDER_HEIGHT = HEIGHT - (BALL_SIZE * PROTUDE_PERCENTAGE);
 CYLINDER_RADIOUS = (BALL_SIZE/2) + WALL_THICKNESS + AIRGAP;
 
 function half(dimension) = dimension / 2;
@@ -17,7 +17,7 @@ function half(dimension) = dimension / 2;
 CYLINDER_OFFSET = [0, 0, HEIGHT-half(BALL_SIZE)];
 
 difference () {
-    cylinder(r1 = CYLINDER_RADIOUS , r2 = CYLINDER_RADIOUS,  CYLINDER_HEIGHT - (BALL_SIZE * PROTUDE_PERCENTAGE));
+    cylinder(r1 = CYLINDER_RADIOUS , r2 = CYLINDER_RADIOUS, CYLINDER_HEIGHT);
     
     translate(CYLINDER_OFFSET) {
         cube(size = [CYLINDER_RADIOUS * 2 + 5, CYLINDER_RADIOUS/2, BALL_SIZE*1.25], center = true );
