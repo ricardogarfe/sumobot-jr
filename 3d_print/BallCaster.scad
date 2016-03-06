@@ -9,14 +9,14 @@ PROTUDE_PERCENTAGE = .33; //percentage of ball radius sticking out
 MOUNT_TYPE = 1;  //1=ears  2=center screw
 SCREW_SPACGING = 25;
 
-cylheight = HEIGHT;
-cylrad = (BALL_SIZE/2) + WALL_THICKNESS + AIRGAP;
+CYLINDER_HEIGHT = HEIGHT;
+CYLINDER_RADIOUS = (BALL_SIZE/2) + WALL_THICKNESS + AIRGAP;
 
 difference () {
-    cylinder(r1 = cylrad , r2 = cylrad,  cylheight - (BALL_SIZE * PROTUDE_PERCENTAGE));
+    cylinder(r1 = CYLINDER_RADIOUS , r2 = CYLINDER_RADIOUS,  CYLINDER_HEIGHT - (BALL_SIZE * PROTUDE_PERCENTAGE));
 
     translate([0,0,HEIGHT - BALL_SIZE/2]) {
-        cube(size = [cylrad*2+5, cylrad/2, BALL_SIZE*1.25], center = true );
+        cube(size = [CYLINDER_RADIOUS * 2 + 5, CYLINDER_RADIOUS/2, BALL_SIZE*1.25], center = true );
         }
 
     translate([0,0,HEIGHT - (BALL_SIZE/2)]) {
@@ -28,12 +28,12 @@ difference (){
     linear_extrude(height=MOUNT)
     hull() {
         translate([SCREW_SPACGING/2, 0, 0]) {
-            circle(  MOUNT_SCREW_RADIOUS * 3);
+            circle(MOUNT_SCREW_RADIOUS * 3);
             }
         translate([1 - SCREW_SPACGING/2, 0, 0]) {
-            circle( MOUNT_SCREW_RADIOUS * 3);
+            circle(MOUNT_SCREW_RADIOUS * 3);
             }
-        circle( cylrad);
+        circle(CYLINDER_RADIOUS);
         }
 
     translate([SCREW_SPACGING/2, 0, 0]) {
