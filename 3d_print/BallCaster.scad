@@ -20,17 +20,17 @@ CUBE_DIMENSIONS = [CYLINDER_RADIOUS * 2 + 5, CYLINDER_RADIOUS/2, BALL_SIZE * 1.2
 
 function half(dimension) = dimension / 2;
 
-difference () {
-    cylinder(r1 = CYLINDER_RADIOUS , r2 = CYLINDER_RADIOUS, CYLINDER_HEIGHT);
-    
+module cylinder() {
     translate(CYLINDER_OFFSET) {
-        cube(size = CUBE_DIMENSIONS, center = true );
-        }
-
-    translate(CYLINDER_OFFSET) {
-        sphere (BALL_SIZE/2 + AIRGAP, $fa=5, $fs=0.1);
+        difference () {
+            cylinder(r1 = CYLINDER_RADIOUS , r2 = CYLINDER_RADIOUS, CYLINDER_HEIGHT);
+            cube(size = CUBE_DIMENSIONS, center = true );
+            sphere (BALL_SIZE/2 + AIRGAP, $fa=5, $fs=0.1);
         }
     }
+}
+
+cylinder();
 
 difference (){
     linear_extrude(height=MOUNT)
