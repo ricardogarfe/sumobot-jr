@@ -32,6 +32,15 @@ module top() {
     }
 }
 
+module screw_holes () {
+    translate([SCREW_SPACING/2, 0, 0]) {
+        cylinder(r1 = SCREW_RADIOUS, r2 = SCREW_RADIOUS, h= MOUNT + 2);
+    }
+    translate([1 - SCREW_SPACING/2, 0, 0]) {
+        cylinder(r1 = SCREW_RADIOUS, r2 = SCREW_RADIOUS, h= MOUNT + 2);
+    }
+}
+
 module base() {
     difference (){
         linear_extrude(height=MOUNT)
@@ -43,14 +52,8 @@ module base() {
                 circle(SCREW_RADIOUS * 3);
                 }
             circle(RADIOUS);
-            }
-
-        translate([SCREW_SPACING/2, 0, 0]) {
-            cylinder(r1 = SCREW_RADIOUS, r2 = SCREW_RADIOUS, h= MOUNT + 2);
-            }
-        translate([1 - SCREW_SPACING/2, 0, 0]) {
-            cylinder(r1 = SCREW_RADIOUS, r2 = SCREW_RADIOUS, h= MOUNT + 2);
-            }
+        }
+        screw_holes();
     }
 }
 
