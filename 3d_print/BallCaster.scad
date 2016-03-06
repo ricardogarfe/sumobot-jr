@@ -3,7 +3,7 @@ BALL_SIZE = 15.88;
 AIRGAP = .5;
 MOUNT = 3;
 HEIGHT = 19.5;
-MOUNT_SCREW_RADIOUS = 1.5;  //3mm screw
+SCREW_RADIOUS = 1.5;  //3mm screw
 PROTUDE_PERCENTAGE = .33; //percentage of ball radius sticking out 
 
 MOUNT_TYPE = 1;  //1=ears  2=center screw
@@ -28,18 +28,18 @@ difference (){
     linear_extrude(height=MOUNT)
     hull() {
         translate([SCREW_SPACING/2, 0, 0]) {
-            circle(MOUNT_SCREW_RADIOUS * 3);
+            circle(SCREW_RADIOUS * 3);
             }
         translate([1 - SCREW_SPACING/2, 0, 0]) {
-            circle(MOUNT_SCREW_RADIOUS * 3);
+            circle(SCREW_RADIOUS * 3);
             }
         circle(CYLINDER_RADIOUS);
         }
 
     translate([SCREW_SPACING/2, 0, 0]) {
-        cylinder(r1 = MOUNT_SCREW_RADIOUS, r2 = MOUNT_SCREW_RADIOUS, h= MOUNT + 2);
+        cylinder(r1 = SCREW_RADIOUS, r2 = SCREW_RADIOUS, h= MOUNT + 2);
         }
     translate([1 - SCREW_SPACING/2, 0, 0]) {
-        cylinder(r1 = MOUNT_SCREW_RADIOUS, r2 = MOUNT_SCREW_RADIOUS, h= MOUNT + 2);
+        cylinder(r1 = SCREW_RADIOUS, r2 = SCREW_RADIOUS, h= MOUNT + 2);
         }
 }
