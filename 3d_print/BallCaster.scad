@@ -12,16 +12,16 @@ BALL_SIZE = 15.88;
 SCREW_SPACING = 25;
 SCREW_RADIOUS = 1.5;  //3mm screw
 
-CYLINDER_HEIGHT = HEIGHT - (BALL_SIZE * PROTUDE_PERCENTAGE);
-CYLINDER_RADIOUS = (BALL_SIZE/2) + WALL_THICKNESS + AIRGAP;
-CYLINDER_OFFSET = [0, 0, HEIGHT-half(BALL_SIZE)];
-
-CUBE_DIMENSIONS = [CYLINDER_RADIOUS * 2 + 5, CYLINDER_RADIOUS/2, BALL_SIZE * 1.25];
-
 function half(dimension) = dimension / 2;
 
-module cylinder() {
-    translate(CYLINDER_OFFSET) {
+module top() {
+    CYLINDER_HEIGHT = HEIGHT - (BALL_SIZE * PROTUDE_PERCENTAGE);
+    CYLINDER_RADIOUS = (BALL_SIZE/2) + WALL_THICKNESS + AIRGAP;
+    TOP_OFFSET = [0, 0, HEIGHT-half(BALL_SIZE)];
+
+    CUBE_DIMENSIONS = [CYLINDER_RADIOUS * 2 + 5, CYLINDER_RADIOUS/2, BALL_SIZE * 1.25];
+
+    translate(TOP_OFFSET) {
         difference () {
             cylinder(r1 = CYLINDER_RADIOUS , r2 = CYLINDER_RADIOUS, CYLINDER_HEIGHT);
             cube(size = CUBE_DIMENSIONS, center = true );
@@ -53,7 +53,7 @@ module base() {
 }
 
 module ball_caster() {
-    cylinder();
+    top();
     base();
 }
 
