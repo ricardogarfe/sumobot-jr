@@ -52,5 +52,9 @@ module base() {
     }
 }
 
-cylinder();
-base();
+module ball_caster() {
+    cylinder();
+    base();
+}
+
+ball_caster();
