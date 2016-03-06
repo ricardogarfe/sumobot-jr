@@ -30,24 +30,27 @@ module cylinder() {
     }
 }
 
-cylinder();
+module base() {
+    difference (){
+        linear_extrude(height=MOUNT)
+        hull() {
+            translate([SCREW_SPACING/2, 0, 0]) {
+                circle(SCREW_RADIOUS * 3);
+                }
+            translate([1 - SCREW_SPACING/2, 0, 0]) {
+                circle(SCREW_RADIOUS * 3);
+                }
+            circle(CYLINDER_RADIOUS);
+            }
 
-difference (){
-    linear_extrude(height=MOUNT)
-    hull() {
         translate([SCREW_SPACING/2, 0, 0]) {
-            circle(SCREW_RADIOUS * 3);
+            cylinder(r1 = SCREW_RADIOUS, r2 = SCREW_RADIOUS, h= MOUNT + 2);
             }
         translate([1 - SCREW_SPACING/2, 0, 0]) {
-            circle(SCREW_RADIOUS * 3);
+            cylinder(r1 = SCREW_RADIOUS, r2 = SCREW_RADIOUS, h= MOUNT + 2);
             }
-        circle(CYLINDER_RADIOUS);
-        }
-
-    translate([SCREW_SPACING/2, 0, 0]) {
-        cylinder(r1 = SCREW_RADIOUS, r2 = SCREW_RADIOUS, h= MOUNT + 2);
-        }
-    translate([1 - SCREW_SPACING/2, 0, 0]) {
-        cylinder(r1 = SCREW_RADIOUS, r2 = SCREW_RADIOUS, h= MOUNT + 2);
-        }
+    }
 }
+
+cylinder();
+base();
