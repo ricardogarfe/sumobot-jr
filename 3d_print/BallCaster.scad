@@ -11,7 +11,7 @@ SCREW_SPACGING = 25;
 
 cylheight = HEIGHT;
 cylrad = (BALL_SIZE/2) + WALL_THICKNESS + AIRGAP;
-echo (cylheight);
+
 difference () {
     cylinder(r1 = cylrad , r2 = cylrad,  cylheight - (BALL_SIZE * PROTUDE_PERCENTAGE));
 
